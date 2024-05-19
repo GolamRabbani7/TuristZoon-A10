@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Component/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
-import { Alert } from "flowbite-react";
+
 
 
 const Register = () => {
