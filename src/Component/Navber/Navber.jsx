@@ -1,10 +1,18 @@
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import auth from "../../FireBase/firebase.config";
+import { signOut } from "firebase/auth";
+import Swal from "sweetalert2";
 
 
 const Navber = () => {
 
+
+    const { user } = useContext(AuthContext)
+
+    console.log(user)
     const navber = <>
         <li><NavLink to='/' className={({ isActive }) => isActive ? 'text-blue-600 mx-2 font-medium border-2 border-blue-500'
             : '  mx-2'}>Home</NavLink></li>
@@ -18,7 +26,7 @@ const Navber = () => {
     </>
 
     const [theme, setTheme] = useState('light')
-
+    const [isHovered, setIsHovered] = useState(false);
     const handleToggle = (e) => {
         if (e.target.value) {
             setTheme('synthwave')
@@ -27,8 +35,16 @@ const Navber = () => {
         }
     }
 
-
-    
+    const handleLogOut = () => {
+        signOut(auth).then(() => {
+            if (auth) {
+                Swal.fire("Successfully Log Out");
+            }
+        }).catch((error) => {
+            // An error happened.
+            console.log(error)
+        });
+    }
 
 
 
@@ -53,7 +69,7 @@ const Navber = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <label className="swap swap-rotate" onClick={handleToggle}>
+                    <label className="swap swap-rotate mr-5" onClick={handleToggle}>
                         {/* this hidden checkbox controls the state */}
                         <input type="checkbox" className="theme-controller" value={theme} />
 
@@ -63,8 +79,60 @@ const Navber = () => {
                         {/* moon icon */}
                         <svg className="swap-on fill-current w-10 h-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" /></svg>
                     </label>
-                    <Link to='/login'><button type="button" className="text-white mx-5 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5
-                     text-center me-2 mb-2"> Login </button></Link>
+
+                    {
+                        user ?
+
+
+
+                            <div className="relative">
+
+
+                                <img
+                                    className="rounded-full w-[40px]"
+                                    src={user?.photoURL}
+                                    onMouseEnter={() => setIsHovered(true)}
+                                    // onMouseLeave={() => setIsHovered(false)}
+                                     alt="User" />
+
+                                {isHovered && (
+                                    <div className="absolute rounded-md px-5 pb-2  bg-green-200   top-10 right-0 ">
+                                        <div className=" text-xl  text-blue-500">
+                                            <h3>{user?.displayName}</h3>
+                                        </div>
+                                        <div className=" ">
+                                            <button
+                                                onClick={handleLogOut} type="button"
+                                                className="  text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5
+                                                text-center  "> LOG OUT </button>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+
+
+
+
+
+                            // <div className='ml-5  flex  '  >
+                            //     <img
+                            //         className="rounded-full required: w-[40px]"
+                            // src={user?.photoURL} title={user?.displayName} alt="User" />
+
+
+
+
+
+                            // </div>
+
+
+
+
+
+                            : <Link to='/login'><button type="button" className="text-white mx-5 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5
+                             text-center me-2 mb-2"> LOG IN </button></Link>
+                    }
 
 
                 </div>
