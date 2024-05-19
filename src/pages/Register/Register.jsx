@@ -18,31 +18,49 @@ const Register = () => {
         console.log(name, photo, email, password,)
 
         // UserCreat
-        UserCreat(email, password)
-            .then((userCredential) => {
-                // Signed up 
-                const user = userCredential.user;
-                console.log(user)
-                if (user) {
-                    Swal.fire("User created Successfully ");
-                }
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+        // const reg = '/^(?=.*[a-z])(?=.*[A-Z]).{8,32}$/';
+        // // const test = reg.test(password);
 
-                console.log(error)
-                if (errorCode || errorMessage) {
-                    Swal.fire({
-                        position: "center",
-                        icon: "error",
-                        text: "  Email already in use(somthing error) !",
-                        showConfirmButton: false,
-                        timer: 2500
-                    });
-                }
+        // const isValidPassword = (password) => {
+        //     return reg.test(password);
+        // };
+
+        if (password) {
+            UserCreat(email, password)
+                .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+                    console.log(user)
+                    if (user) {
+                        Swal.fire("User created Successfully ");
+                    }
+                    // ...
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+
+                    console.log(error)
+                    if (errorCode || errorMessage) {
+                        Swal.fire({
+                            position: "center",
+                            icon: "error",
+                            text: "  Email already in use(somthing error) !",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                    }
+                });
+        }
+        else {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                text: " password must be an Uppercase an Lowercase and at least 6 character",
+                showConfirmButton: false,
+                timer: 2500
             });
+        }
 
     }
     return (
