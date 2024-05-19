@@ -16,6 +16,7 @@ import AddTuristsSport from './pages/AddTuristsSport/AddTuristsSport.jsx';
 import MyList from './pages/MyList/MyList.jsx';
 import Login from './pages/Login/Login.jsx';
 import Register from './pages/Register/Register.jsx';
+import AuthProvider from './Component/AuthProvider/AuthProvider.jsx';
 
 
 
@@ -23,32 +24,32 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<ErrorPage></ErrorPage>,
-    children:[
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
       {
-        path:'/',
-        element:<Home></Home>
+        path: '/',
+        element: <Home></Home>
       },
       {
-        path:'/login',
-        element:<Login></Login>
+        path: '/login',
+        element: <Login></Login>
       },
       {
-        path:'/register',
-        element:<Register></Register>
+        path: '/register',
+        element: <Register></Register>
       }
       ,
       {
-        path:'allTuristSoprt',
-        element:<AllTuristSport></AllTuristSport>
+        path: 'allTuristSoprt',
+        element: <AllTuristSport></AllTuristSport>
       },
       {
-        path:'AddTuristSoprt',
-        element:<AddTuristsSport></AddTuristsSport>
+        path: 'AddTuristSoprt',
+        element: <AddTuristsSport></AddTuristsSport>
       },
       {
-        path:'myList',
-        element:<MyList></MyList>
+        path: 'myList',
+        element: <MyList></MyList>
       }
     ]
   },
@@ -58,6 +59,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
