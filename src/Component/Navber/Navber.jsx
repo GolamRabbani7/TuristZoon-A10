@@ -50,7 +50,7 @@ const Navber = () => {
 
     return (
         <div className="">
-            <div className="navbar sticky top-5 shadow-lg rounded-md ">
+            <div className="navbar relative bg-sky-400 sticky top-5 shadow-lg rounded-md ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -85,7 +85,7 @@ const Navber = () => {
 
 
 
-                            <div className="relative">
+                            <div className="">
 
 
                                 <img
@@ -96,7 +96,7 @@ const Navber = () => {
                                      alt="User" />
 
                                 {isHovered && (
-                                    <div className="absolute rounded-md px-5 pb-2  bg-green-200   top-10 right-0 ">
+                                    <div className=" absolute rounded-md px-5 pb-2  bg-green-200   top-10 right-0 ">
                                         <div className=" text-xl  text-blue-500">
                                             <h3>{user?.displayName}</h3>
                                         </div>
