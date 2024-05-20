@@ -17,6 +17,7 @@ import Login from './pages/Login/Login.jsx';
 import Register from './pages/Register/Register.jsx';
 import AuthProvider from './Component/AuthProvider/AuthProvider.jsx';
 import ViewDetails from './pages/ViewDetails/ViewDetails.jsx'
+import PrivetRoute from './router/PrivetRoute.jsx';
 
 
 
@@ -47,17 +48,23 @@ const router = createBrowserRouter([
       },
       {
         path: '/viewdetails/:id',
-        element: <ViewDetails></ViewDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5173/addTurist/${params._id}`)
+        element: <PrivetRoute>
+          <ViewDetails></ViewDetails>,
+        </PrivetRoute>,
+        loader: ({ params }) => fetch(`/http://localhost:5173/addTurist/${params._id}`)
 
       },
       {
         path: 'AddTuristSoprt',
-        element: <AddTuristsSport></AddTuristsSport>
+        element: <PrivetRoute>
+          <AddTuristsSport></AddTuristsSport>
+        </PrivetRoute>
       },
       {
         path: 'myList',
-        element: <MyList></MyList>
+        element: <PrivetRoute>
+          <MyList></MyList>
+        </PrivetRoute>
       }
     ]
   },
