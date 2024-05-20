@@ -12,7 +12,7 @@ const Navber = () => {
 
     const { user } = useContext(AuthContext)
 
-    console.log(user)
+    // console.log(user)
     const navber = <>
         <li><NavLink to='/' className={({ isActive }) => isActive ? 'text-blue-600 mx-2 font-medium border-2 border-blue-500'
             : '  mx-2'}>Home</NavLink></li>

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider } from 'react-router-dom'
 // import { router } from './router/router'
-
 import {
   createBrowserRouter,
 
@@ -17,6 +16,7 @@ import MyList from './pages/MyList/MyList.jsx';
 import Login from './pages/Login/Login.jsx';
 import Register from './pages/Register/Register.jsx';
 import AuthProvider from './Component/AuthProvider/AuthProvider.jsx';
+import ViewDetails from './pages/ViewDetails/ViewDetails.jsx'
 
 
 
@@ -42,8 +42,14 @@ const router = createBrowserRouter([
       {
         path: 'allTuristSoprt',
         element: <AllTuristSport></AllTuristSport>,
-        loader:()=>fetch('http://localhost:5000/addTurist')
-        
+        loader: () => fetch('http://localhost:5000/addTurist')
+
+      },
+      {
+        path: '/viewdetails/:id',
+        element: <ViewDetails></ViewDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5173/addTurist/${params._id}`)
+
       },
       {
         path: 'AddTuristSoprt',
