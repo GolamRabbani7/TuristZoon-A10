@@ -5,7 +5,7 @@ const AllTuristSport = () => {
 
     const allTuristSoprts = useLoaderData();
 
-// console.log(allTuristSoprts)
+console.log(allTuristSoprts)
     return (
         <div>
             <h1 className="font-semibold"> All Tourists Spot :{allTuristSoprts.length}</h1>

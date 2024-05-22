@@ -85,33 +85,38 @@ const Navber = () => {
 
 
 
-                            <div className="">
+                            // <div className="">
 
 
-                                <img
-                                    className="rounded-full w-[40px]"
-                                    src={user?.photoURL}
-                                    onMouseEnter={() => setIsHovered(true)}
-                                    // onMouseLeave={() => setIsHovered(false)}
-                                     alt="User" />
+                            //     <img
+                            //         className="rounded-full w-[40px]"
+                            //         src={user?.photoURL}
+                            //         onMouseEnter={() => setIsHovered(true)}
+                            //         // onMouseLeave={() => setIsHovered(false)}
+                            //          alt="User" />
 
-                                {isHovered && (
-                                    <div className=" absolute rounded-md px-5 pb-2  bg-green-200   top-10 right-0 ">
-                                        <div className=" text-xl  text-blue-500">
-                                            <h3>{user?.displayName}</h3>
-                                        </div>
-                                        <div className=" ">
-                                            <button
-                                                onClick={handleLogOut} type="button"
-                                                className="  text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5
-                                                text-center  "> LOG OUT </button>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
+                            //     {isHovered && (
+                            //         <div className=" absolute rounded-md px-5 pb-2  bg-green-200   top-10 right-0 ">
+                            //             <div className=" text-xl  text-blue-500">
+                            //                 <h3>{user?.displayName}</h3>
+                            //             </div>
+                            //             <div className=" ">
+                            //                 <button
+                            //                     onClick={handleLogOut} type="button"
+                            //                     className="  text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5
+                            //                     text-center  "> LOG OUT </button>
+                            //             </div>
+                            //         </div>
+                            //     )}
+                            // </div>
 
 
-
+                            <div className=" ">
+                            <button
+                                onClick={handleLogOut} type="button"
+                                className="  text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5
+                                text-center  "> LOG OUT </button>
+                        </div>
 
 
 

@@ -8,7 +8,7 @@ import {
 
 } from "react-router-dom";
 import Root from './pages/Root/Root.jsx';
-import Home from './pages/Home/Home.jsx';
+import Home from './pages/Home-others/Home.jsx';
 import ErrorPage from './pages/ErrorPage/ErrorPage.jsx';
 import AllTuristSport from './pages/AllTuristSport/AllTuristSport.jsx';
 import AddTuristsSport from './pages/AddTuristsSport/AddTuristsSport.jsx';
@@ -18,6 +18,8 @@ import Register from './pages/Register/Register.jsx';
 import AuthProvider from './Component/AuthProvider/AuthProvider.jsx';
 import ViewDetails from './pages/ViewDetails/ViewDetails.jsx'
 import PrivetRoute from './router/PrivetRoute.jsx';
+import TouristsSpots from './pages/Home-others/TouristsSpots.jsx';
+
 
 
 
@@ -41,17 +43,23 @@ const router = createBrowserRouter([
       }
       ,
       {
-        path: 'allTuristSoprt',
+        path: '/allTuristSoprt',
         element: <AllTuristSport></AllTuristSport>,
         loader: () => fetch('http://localhost:5000/addTurist')
 
       },
       {
+        path: '/turistSports',
+        element: <TouristsSpots></TouristsSpots>,
+        loader: () => fetch('http://localhost:5000/turistSports')
+      },
+
+      {
         path: '/viewdetails/:id',
         element: <PrivetRoute>
           <ViewDetails></ViewDetails>,
         </PrivetRoute>,
-        loader: ({ params }) => fetch(`/http://localhost:5173/addTurist/${params._id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/addTurist/${params.id}`)
 
       },
       {

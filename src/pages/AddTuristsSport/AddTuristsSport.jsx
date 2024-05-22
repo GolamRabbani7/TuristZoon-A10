@@ -60,6 +60,7 @@ const AddTuristsSport = () => {
                 <label className="text-sm">Desctiopion</label>
                 <input {...register("desctiopion")} type="text" placeholder="desctiopion" className="w-full rounded-md focus:ring focus:ring-opacity-75 p-3  focus:dark:ring-violet-600 dark:border-gray-300" />
               </div>
+              
               <div className="col-span-full sm:col-span-3">
                 <label className="text-sm">Tota Visitors Per Year</label>
                 <input {...register("totaVisitorsPerYear")} type="text" placeholder="like- 10000" className="w-full rounded-md focus:ring focus:ring-opacity-75 p-3  focus:dark:ring-violet-600 dark:border-gray-300" />
@@ -72,11 +73,11 @@ const AddTuristsSport = () => {
 
               <div className="col-span-full sm:col-span-2">
                 <label className="text-sm"> Seasonality</label>
-                <input {...register(" seasonality")} type="text" placeholder=" like summer, winter" className="w-full rounded-md focus:ring focus:ring-opacity-75 p-3  focus:dark:ring-violet-600 dark:border-gray-300" />
+                <input {...register("seasonality")} type="text" placeholder=" like summer, winter" className="w-full rounded-md focus:ring focus:ring-opacity-75 p-3  focus:dark:ring-violet-600 dark:border-gray-300" />
               </div>
               <div className="col-span-full sm:col-span-2">
                 <label className="text-sm"> Travel time</label>
-                <input {...register(" travelTime")} type="text" placeholder=" like- 7 days" className="w-full rounded-md focus:ring focus:ring-opacity-75 p-3  focus:dark:ring-violet-600 dark:border-gray-300" />
+                <input {...register("travelTime")} type="text" placeholder=" like- 7 days" className="w-full rounded-md focus:ring focus:ring-opacity-75 p-3  focus:dark:ring-violet-600 dark:border-gray-300" />
               </div>
             </div>
           </div>
